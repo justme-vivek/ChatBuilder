@@ -781,7 +781,7 @@ User: {user_msg}
         st.markdown("<div class='card'><h4>Buy developer a lollipop 🍭</h4>", unsafe_allow_html=True)
     
         upi_id = "gkm2302-1@oksbi"
-        upi_qr_url = "https://raw.githubusercontent.com/Mayurkoli8/ChatDouble/refs/heads/main/download.png"
+        upi_qr_url = "https://raw.githubusercontent.com/justme-vivek/ChatBuilder/refs/heads/main/download.png"
         
         # ✅ handle external URL QR (http/https only)
         if upi_qr_url and isinstance(upi_qr_url, str):
