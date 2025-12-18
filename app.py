@@ -574,7 +574,7 @@ else:
 
                 with inp_col:
                     user_msg = st.text_input(
-                        "",
+                        "Message",
                         key="chat_input_box",
                         label_visibility="collapsed",
                         placeholder="Type…"
