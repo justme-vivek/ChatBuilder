@@ -204,7 +204,7 @@ Return only the short persona description.
 """
     try:
         resp = genai_client.models.generate_content(
-            model="gemini-pro",
+            model="gemini-1.5-flash",
             contents=prompt,
             options={"temperature": 0.2, "max_output_tokens": 120}
         )
@@ -657,19 +657,18 @@ User: {user_msg}
 
                     try:
                         resp = genai_client.models.generate_content(
-                            model="gemini-pro",
+                            model="gemini-1.5-flash",
                             contents=prompt
                         )
-                        reply = getattr(resp, "text", None) or (resp.get("message", {}).get("content", "") if isinstance(resp, dict) else "") or "⚠️Offline (Text after sometime)"
-                    except Exception:
-                        try:
-                            resp = genai_client.models.generate_content(
-                                model="gemini-pro",
-                                contents=prompt
-                            )
-                            reply = getattr(resp, "text", None) or (resp.get("message", {}).get("content", "") if isinstance(resp, dict) else "") or "⚠️Offline (Text after sometime)"
-                        except Exception as e:
-                            reply = f"⚠️Offline (Try after sometime): {e}"
+                        reply = getattr(resp, "text", None) or (resp.get("message", {}).get("content", "") if isinstance(resp, dict) else "") or "⚠️Offline (Try after sometime)"
+                    except Exception as e:
+                        error_str = str(e)
+                        if "RESOURCE_EXHAUSTED" in error_str:
+                            reply = "⚠️API quota exceeded. Please try again later or upgrade your plan."
+                        elif "NOT_FOUND" in error_str:
+                            reply = "⚠️Model not available. Please check your API configuration."
+                        else:
+                            reply = "⚠️Offline (Try after sometime)"
 
                     st.session_state[chat_key][-1]["bot"] = reply
                     st.session_state[chat_key][-1]["ts"] = datetime.now().strftime("%I:%M %p")
@@ -911,7 +910,7 @@ User: {user_input}
         return
 
     # choose model conservatively
-    model_name = "gemini-pro"  # general model; change if you prefer flash versions
+    model_name = "gemini-1.5-flash"  # general model; change if you prefer flash versions
     try:
         # use streaming if available in your genai client
         resp_iter = genai_client.models.generate_content_stream(model=model_name, contents=prompt)
@@ -929,7 +928,13 @@ User: {user_input}
             save_chat_history_cloud(user, bot_name, st.session_state[selected_key])
             return
         except Exception as e:
-            pending["bot"] = f"⚠️Offline (Text after sometime)"
+            error_str = str(e)
+            if "RESOURCE_EXHAUSTED" in error_str:
+                pending["bot"] = "⚠️API quota exceeded. Please try again later or upgrade your plan."
+            elif "NOT_FOUND" in error_str:
+                pending["bot"] = "⚠️Model not available. Please check your API configuration."
+            else:
+                pending["bot"] = "⚠️Offline (Try after sometime)"
             pending["ts"] = datetime.now().strftime("%I:%M %p")
             save_chat_history_cloud(user, bot_name, st.session_state[selected_key])
             return
