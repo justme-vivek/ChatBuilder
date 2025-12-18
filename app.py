@@ -204,7 +204,7 @@ Return only the short persona description.
 """
     try:
         resp = genai_client.models.generate_content(
-            model="gemini-1.5-flash",
+            model="gemini-pro",
             contents=prompt,
             options={"temperature": 0.2, "max_output_tokens": 120}
         )
@@ -657,14 +657,14 @@ User: {user_msg}
 
                     try:
                         resp = genai_client.models.generate_content(
-                            model="gemini-1.5-flash",
+                            model="gemini-pro",
                             contents=prompt
                         )
                         reply = getattr(resp, "text", None) or (resp.get("message", {}).get("content", "") if isinstance(resp, dict) else "") or "⚠️Offline (Text after sometime)"
                     except Exception:
                         try:
                             resp = genai_client.models.generate_content(
-                                model="gemini-1.5-flash",
+                                model="gemini-pro",
                                 contents=prompt
                             )
                             reply = getattr(resp, "text", None) or (resp.get("message", {}).get("content", "") if isinstance(resp, dict) else "") or "⚠️Offline (Text after sometime)"
@@ -911,7 +911,7 @@ User: {user_input}
         return
 
     # choose model conservatively
-    model_name = "gemini-1.5-flash"  # general model; change if you prefer flash versions
+    model_name = "gemini-pro"  # general model; change if you prefer flash versions
     try:
         # use streaming if available in your genai client
         resp_iter = genai_client.models.generate_content_stream(model=model_name, contents=prompt)
