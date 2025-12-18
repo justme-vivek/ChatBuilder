@@ -1,13 +1,13 @@
-# **Bot Builder**
+# **Chat Builder**
 
-Bot Builder is a private AI chat platform that lets you create lifelike chatbots trained on real chat histories, like WhatsApp or Instagram exports.
+Chat Builder is a private AI chat platform that lets you create lifelike chatbots trained on real chat histories, like WhatsApp or Instagram exports.
 Upload your chats, name your bot, and talk to an AI version of that person powered by Google Gemini.
 
 ---
 
 ## Working Prototype
 
-[Bot Builder](https://chatdouble.streamlit.app)
+[Chat Builder](https://chatbuilder.streamlit.app/)
 
 ---
 
