@@ -776,25 +776,6 @@ User: {user_msg}
                         st.error(f"Clear error: {e}")
     
     
-    # ----- Buy Lollipop tab -----
-    with tabs[2]:
-        st.markdown("<div class='card'><h4>Buy developer a lollipop 🍭</h4>", unsafe_allow_html=True)
-    
-        upi_id = "kolimohit9595-1@okicici"
-        upi_qr_url = "https://raw.githubusercontent.com/Mayurkoli8/ChatDouble/refs/heads/main/download.png"
-        
-        # ✅ handle external URL QR (http/https only)
-        if upi_qr_url and isinstance(upi_qr_url, str):
-            if upi_qr_url.lower().startswith("http"):
-                st.image(upi_qr_url, width=220)
-            else:
-                st.info("⚠️ Invalid `upi_qr_url` format — must start with http/https (not a local path).")
-        # ✅ Show UPI ID
-        st.markdown(f"<h4>UPI ID: <code>{upi_id}</code></h4>", unsafe_allow_html=True)
-
-        st.markdown("</div>", unsafe_allow_html=True)
-    
-    
 # ---------------------------
 # Final: keep consistent behavior
 # ---------------------------
