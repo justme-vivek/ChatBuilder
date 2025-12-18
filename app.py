@@ -254,7 +254,7 @@ if "show_inline_login" not in st.session_state:
 # authentication, such as logging in, registering, and logging out. It also provides a tip for
 # managing bots and uploading files.
 with st.sidebar:
-    st.markdown("<div style='display:flex;align-items:center;gap:10px;'><div style='width:44px;height:44px;border-radius:10px;background:#6c63ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700'>CD</div><div><b style='font-size:16px;color:#fff'>ChatDouble</b><div class='small-muted'>Personal chatbots from exports</div></div></div>", unsafe_allow_html=True)
+    st.markdown("<div style='display:flex;align-items:center;gap:10px;'><div style='width:44px;height:44px;border-radius:10px;background:#6c63ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700'>CD</div><div><b style='font-size:16px;color:#fff'>Bot Builder</b><div class='small-muted'>Personal chatbots from exports</div></div></div>", unsafe_allow_html=True)
     st.markdown("---")
     st.subheader("🔐 Account")
     if not st.session_state.logged_in:
@@ -302,7 +302,7 @@ with st.sidebar:
 # ---------------------------
 # Tabs: Home | Chat | Manage | Buy
 # ---------------------------
-st.markdown("<div class='chat-header'><div class='title'>ChatDouble</div><div class='subtitle'>&nbsp&nbspBring your friends back to chat — private bots from your chat exports.</div></div>", unsafe_allow_html=True)    
+st.markdown("<div class='chat-header'><div class='title'>Bot Builder</div><div class='subtitle'>&nbsp&nbspBring your friends back to chat — private bots from your chat exports.</div></div>", unsafe_allow_html=True)    
 if not st.session_state.logged_in:
     # Unauthenticated view: show only Home
     # ----- Home tab -----
