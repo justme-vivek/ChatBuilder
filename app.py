@@ -22,7 +22,7 @@ from firebase_db import (
 # ---------------------------
 # Page config + Gemini client
 # ---------------------------
-st.set_page_config(page_title="Bot Builder", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="Chat Builder", page_icon="🤖", layout="wide")
 API_KEY = os.getenv("GEMINI_API_KEY") or (st.secrets.get("GEMINI_API_KEY") if st.secrets else None)
 if not API_KEY:
     # app should still load if missing key — show warning later where generation happens
@@ -254,7 +254,7 @@ if "show_inline_login" not in st.session_state:
 # authentication, such as logging in, registering, and logging out. It also provides a tip for
 # managing bots and uploading files.
 with st.sidebar:
-    st.markdown("<div style='display:flex;align-items:center;gap:10px;'><div style='width:44px;height:44px;border-radius:10px;background:#6c63ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700'>CD</div><div><b style='font-size:16px;color:#fff'>Bot Builder</b><div class='small-muted'>Personal chatbots from exports</div></div></div>", unsafe_allow_html=True)
+    st.markdown("<div style='display:flex;align-items:center;gap:10px;'><div style='width:44px;height:44px;border-radius:10px;background:#6c63ff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700'>CD</div><div><b style='font-size:16px;color:#fff'>Chat Builder</b><div class='small-muted'>Personal chatbots from exports</div></div></div>", unsafe_allow_html=True)
     st.markdown("---")
     st.subheader("🔐 Account")
     if not st.session_state.logged_in:
@@ -302,7 +302,7 @@ with st.sidebar:
 # ---------------------------
 # Tabs: Home | Chat | Manage | Buy
 # ---------------------------
-st.markdown("<div class='chat-header'><div class='title'>Bot Builder</div><div class='subtitle'>&nbsp&nbspBring your friends back to chat — private bots from your chat exports.</div></div>", unsafe_allow_html=True)    
+st.markdown("<div class='chat-header'><div class='title'>Chat Builder</div><div class='subtitle'>&nbsp&nbspBring your friends back to chat — private bots from your chat exports.</div></div>", unsafe_allow_html=True)    
 if not st.session_state.logged_in:
     # Unauthenticated view: show only Home
     # ----- Home tab -----
